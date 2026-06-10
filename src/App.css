@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+/* Fonts */
+@import '@fontsource/archivo-black';
+
+/* Dark theme (default) */
+:root {
+    --primary-color: #0f172a;
+    --text-color: #ffffff;
+    --secondary-color: #60a5fa;
+    --nav-bg: rgba(235, 235, 235, 0.103);
+    --border-color: rgba(235, 235, 235, 0.141);
+    --Inter: 'Inter', sans-serif;
+    --Archivo-Black: 'Archivo Black', sans-serif;
+}
+
+/* Light theme - applied when .dark class exists */
+.light {
+    --primary-color: #ffffff;
+    --text-color: #0f172a;
+    --secondary-color: #3b82f6;
+    --nav-bg: rgba(4, 60, 143, 0.161);
+    --border-color: rgba(15, 19, 42, 0.07);
+    --Inter: 'Inter', sans-serif;
+    --Archivo-Black: 'Archivo Black', sans-serif;
+}
+/* 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+} */
+
+body {
+    color: var(--text-color);
+    margin-inline: 120px;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+}
+
+#links a {
+    font-family: var(--Inter)
+}
+
+#nav {
+    margin-top: 20px;
+    border-radius: 20px;
+    padding-inline: 30px;
+    background: var(--nav-bg);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid var(--border-color);
+}
