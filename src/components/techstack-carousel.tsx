@@ -14,21 +14,24 @@ export default function TechStackCarousel() {
     return (
         <>
             <section className="relative mt-10">
-                <h1 className="flex justify-center text-2xl font-bold text-[var(--text-color)] mt-20">
+                <h1
+                    style ={{ fontFamily: 'var(--Instrument-Serif)'}}
+                    className="flex justify-center font-black text-2xl text-[var(--text-color)] mt-20"
+                >
                     Tech Stack
                 </h1>
                 <p className="flex justify-center">Current Languages & Frameworks I've mastered</p>
 
                 {/* Centered Container */}
                 <div className="flex justify-center">
-                    <div className="relative w-[91%] overflow-hidden my-5">
+                    <div className="relative w-[91%] overflow-hidden my-6">
                         {/* Carousel */}
                         <div className="overflow-hidden mask-gradient">
                             <div className="flex animate-endless-scroll gap-10">
                                 {[...techStack, ...techStack, ...techStack].map((techStack, i) => (
                                     <div
                                         key={i}
-                                        className="group mx-2 w-28 h-28 flex flex-col items-center justify-center gap-2 rounded-xl flex-shrink-0 transition-all duration-300 hover:scale-105"
+                                        className="group mx-2 w-28 h-28 flex flex-col items-center justify-center gap-2 rounded-xl flex-shrink-0 transition-all duration-300 hover:"
                                     >
                                         <img
                                             src={techStack.icon}
@@ -37,7 +40,7 @@ export default function TechStackCarousel() {
                                            brightness-75 contrast-125 saturate-0 grayscale
                                            group-hover:brightness-100 group-hover:contrast-100 
                                            group-hover:saturate-100 group-hover:grayscale-0
-                                           group-hover:scale-110"
+                                           group-hover:"
                                         />
                                         <span className="text-xs font-medium text-[var(--text-color)]/0 group-hover:text-[var(--text-color)]/70 transition-all duration-300">
                                             {techStack.name}

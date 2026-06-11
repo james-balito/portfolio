@@ -2,28 +2,50 @@
 
 /* Fonts */
 @import '@fontsource/archivo-black';
+@import '@fontsource/instrument-serif';
+@import '@fontsource/playfair-display';
+@import '@fontsource/jetbrains-mono';
 
 /* Dark theme (default) */
 :root {
     --primary-color: #0f172a;
+    --logo-color: #ffffff;
+    --logo-symbol-color: #3b82f6;
+    --cv-text-color: #ffffff;
+    --button-text-color: #3b82f6;
     --text-color: #ffffff;
     --secondary-color: #60a5fa;
     --nav-bg: rgba(235, 235, 235, 0.103);
     --border-color: rgba(235, 235, 235, 0.141);
+
+    /* Fonts */
     --Inter: 'Inter', sans-serif;
     --Archivo-Black: 'Archivo Black', sans-serif;
+    --Instrument-Serif: 'Instrument Serif', italic;
+    --Playfair-Display: 'Playfair Display', serif;
+    --Jetbrains-Mono: 'Jetbrains Mono', monospace;
 }
 
 /* Light theme - applied when .dark class exists */
 .light {
     --primary-color: #ffffff;
+    --logo-color: #3b82f6;
+    --logo-symbol-color: #0f172a;
+    --cv-text-color: #ffffff;
+    --button-text-color: #ffffff;
     --text-color: #0f172a;
     --secondary-color: #3b82f6;
-    --nav-bg: rgba(4, 60, 143, 0.161);
-    --border-color: rgba(15, 19, 42, 0.07);
+    --nav-bg: rgba(3, 56, 135, 0.105);
+    --border-color: rgba(7, 24, 120, 0.125);
+
+    /* Fonts */
     --Inter: 'Inter', sans-serif;
     --Archivo-Black: 'Archivo Black', sans-serif;
+    --Instrument-Serif: 'Instrument Serif', italic;
+    --Playfair-Display: 'Playfair Display', serif;
+    --Jetbrains-Mono: 'Jetbrains Mono', monospace;
 }
+
 /* 
 * {
     margin: 0;

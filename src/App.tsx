@@ -1,8 +1,9 @@
 import { useState, useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import './App.css'
-import NavBar from './ui/nav-bar'
-import Body from './ui/body'
+import NavBar from './components/nav-bar'
+import Body from './layout/body'
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(() => {
@@ -92,6 +93,8 @@ function App() {
   const toggleDarkMode = () => {
     setIsDarkMode(!isDarkMode);
   };
+
+  gsap.registerPlugin(ScrollTrigger);
 
   return (
     <div className="App">
