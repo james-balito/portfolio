@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import './App.css'
-import NavBar from './components/nav-bar'
 import Body from './layout/body'
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -12,7 +11,6 @@ function App() {
   });
   const [showMainContent, setShowMainContent] = useState(false);
 
-  const navRef = useRef(null);
   const bodyRef = useRef(null);
   const introRef = useRef(null);
   const introTextRef = useRef(null);
@@ -31,7 +29,7 @@ function App() {
   // Opening animation with text reveal
   useEffect(() => {
     // Hide main content initially
-    gsap.set([navRef.current, bodyRef.current], {
+    gsap.set([bodyRef.current], {
       opacity: 0,
       y: 30
     });
@@ -76,13 +74,7 @@ function App() {
   const startEntranceAnimation = () => {
     const tl = gsap.timeline();
     
-    tl.to(navRef.current, {
-      y: 0,
-      opacity: 1,
-      duration: 0.8,
-      ease: "back.out(0.5)"
-    })
-    .to(bodyRef.current, {
+    tl.to(bodyRef.current, {
       y: 0,
       opacity: 1,
       duration: 0.6,
@@ -113,13 +105,8 @@ function App() {
         </div>
       </div>
 
-      {/* Main Content */}
-      <div ref={navRef}>
-        <NavBar toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode} />
-      </div>
-      
-      <div ref={bodyRef}>
-        <Body />
+      <div ref={bodyRef} className='opacity-0'>
+        <Body toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode}/>
       </div>
     </div>
   )

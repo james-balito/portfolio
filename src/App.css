@@ -5,6 +5,9 @@
 @import '@fontsource/instrument-serif';
 @import '@fontsource/playfair-display';
 @import '@fontsource/jetbrains-mono';
+@import '@fontsource/poppins';
+@import '@fontsource/bodoni-moda';
+@import '@fontsource/tienne';
 
 /* Dark theme (default) */
 :root {
@@ -24,11 +27,14 @@
     --Instrument-Serif: 'Instrument Serif', italic;
     --Playfair-Display: 'Playfair Display', serif;
     --Jetbrains-Mono: 'Jetbrains Mono', monospace;
+    --Poppins: 'Poppins', monospace;
+    --Bodoni-Moda: 'Bodoni Moda', serif;
+    --Tienne: 'Tienne';
 }
 
 /* Light theme - applied when .dark class exists */
 .light {
-    --primary-color: #ffffff;
+    --primary-color: #F5F5F5;
     --logo-color: #3b82f6;
     --logo-symbol-color: #0f172a;
     --cv-text-color: #ffffff;
@@ -44,6 +50,9 @@
     --Instrument-Serif: 'Instrument Serif', italic;
     --Playfair-Display: 'Playfair Display', serif;
     --Jetbrains-Mono: 'Jetbrains Mono', monospace;
+    --Poppins: 'Poppins', monospace;
+    --Bodoni-Moda: 'Bodoni Moda', serif;
+    --Tienne: 'Tienne';
 }
 
 /* 
@@ -66,12 +75,23 @@ body {
 
 #nav {
     margin-top: 20px;
-    border-radius: 20px;
-    padding-inline: 30px;
+    padding-inline: px;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border: 1px solid transparent;
+    box-shadow: none;
+    border-radius: 0px;
+}
+
+#nav.scrolled {
     background: var(--nav-bg);
-    border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(20px);
     border: 1px solid var(--border-color);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;  /* Keep it flat, or change to 16px if you want rounded */
+    margin-top: 20px;
 }
