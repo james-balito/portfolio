@@ -69,8 +69,8 @@ export default function WorkExperience() {
             ease: "none",
             scrollTrigger: {
                 trigger: containerRef.current,
-                start: "top 100%", // Spans exactly across viewport middle axis
-                end: "bottom 100%",
+                start: "top 80%", // Spans exactly across viewport middle axis
+                end: "bottom 80%",
                 scrub: 0.5,
             }
         });
@@ -117,7 +117,7 @@ export default function WorkExperience() {
                 <h2
                     ref={titleRef}
                     style={{ fontFamily: 'var(--Instrument-Serif, serif)', fontStyle: 'italic' }}
-                    className="text-xl md:text-4xl text-center mb-24 text-[var(--text-color)] font-light tracking-wide"
+                    className="text-xl md:text-3xl text-center mb-24 text-[var(--text-color)] font-light tracking-wide"
                 >
                     Professional Experience
                 </h2>

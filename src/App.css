@@ -30,6 +30,7 @@
     --Poppins: 'Poppins', monospace;
     --Bodoni-Moda: 'Bodoni Moda', serif;
     --Tienne: 'Tienne';
+    --Fira-Code: 'Fira Code', monospace;
 }
 
 /* Light theme - applied when .dark class exists */
@@ -53,6 +54,7 @@
     --Poppins: 'Poppins', monospace;
     --Bodoni-Moda: 'Bodoni Moda', serif;
     --Tienne: 'Tienne';
+    --Fira-Code: 'Fira Code', monospace;
 }
 
 /* 

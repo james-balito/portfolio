@@ -5,6 +5,7 @@ import WorkExperience from '../components/ui/work-experience';
 import Contact from '../components/ui/contact';
 import Projects from '../components/ui/project';
 import Home from '../components/ui/home';
+import Certifications from '../components/ui/certifications';
 import TechStackCarousel from '../components/ui/techstack-carousel';
 
 interface BodyProps {
@@ -21,6 +22,7 @@ export default function Body({ toggleDarkMode, isDarkMode }: BodyProps) {
             <Home />
             <TechStackCarousel />
             <About />
+            <Certifications />
             <WorkExperience />
             <Projects />
             <Contact />

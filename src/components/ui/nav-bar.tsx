@@ -48,9 +48,9 @@ export default function NavBar({ toggleDarkMode, isDarkMode }: DarkModeProps) {
                 <div className="flex justify-between items-center h-14">
                     {/* Logo */}
                     <a href="#home" className="text-2xl">
-                        <span className="text-[var(--logo-symbol-color)]">&lt;</span>
-                        <span className="font-mono font-bold text-[var(--logo-color)]">JB</span>
-                        <span className="text-[var(--logo-symbol-color)]">/&gt;</span>
+                        <span className="text-lg text-[var(--logo-symbol-color)]">&lt;</span>
+                        <span className="font-semibold text-[var(--logo-color)]" style = {{fontFamily: 'var(--Fira-Mode)'}}>JB</span>
+                        <span className="text-lg text-[var(--logo-symbol-color)]">/&gt;</span>
                     </a>
 
                     {/* Desktop Navigation */}
