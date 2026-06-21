@@ -33,7 +33,7 @@ export default function WorkExperience() {
                 "Implementation: Translated high-fidelity wireframes into static Inertia.js modules to bridge frontend views with backend endpoints.",
                 "Collaboration: Partnered with backend developers and designers to align UI components with database logic requirements."
             ],
-            technologies: ["Laravel", "React.js", "Inertia.js"],
+            technologies: ["Laravel", "React.js", "TailwindCSS","Inertia.js"],
         }
     ];
 

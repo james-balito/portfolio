@@ -185,7 +185,7 @@ export default function Home() {
                         className='px-6 py-5.5 rounded-xl border border-[var(--secondary-color)]/60 hover:border-[var(--secondary-color)]/90 text-[var(--secondary-color)]/70 hover:text-[var(--secondary-color)]/90 hover:cursor-pointer hover:shadow-md/10'
                         style={{ fontFamily: 'var(--Poppins)' }}
                     >
-                        View My Works
+                        <a href="#projects"> View My Works</a>
                     </Button>
                 </div>
             </div>

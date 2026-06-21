@@ -1,4 +1,3 @@
-
 import About from '../components/ui/about';
 import NavBar from '../components/ui/nav-bar';
 import WorkExperience from '../components/ui/work-experience';
@@ -14,18 +13,35 @@ interface BodyProps {
 }
 
 export default function Body({ toggleDarkMode, isDarkMode }: BodyProps) {
-    
+
     return (
         <>
             <NavBar toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode} />
 
-            <Home />
-            <TechStackCarousel />
-            <About />
-            <Certifications />
-            <WorkExperience />
-            <Projects />
-            <Contact />
+            <section id="home">
+                <Home />
+                <TechStackCarousel />
+            </section>
+
+            <section id="about">
+                <About />
+            </section>
+
+            <section id="experience">
+                <WorkExperience />
+            </section>
+
+            <section id="certifications">
+                <Certifications />
+            </section>
+
+            <section id="projects">
+                <Projects />
+            </section>
+
+            <section id="contact">
+                <Contact />
+            </section>
         </>
     )
 }

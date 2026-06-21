@@ -62,8 +62,27 @@ export default function Projects() {
             ],
             link: ""
         },
+       
         {
             id: 2,
+            name: "Secure Profiling System with Role-Based Access Control and Automated Announcements",
+            description: "Integer vel commodo nibh. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Fusce metus risus, ultricies quis metus vel, luctus scelerisque metus. Etiam sit amet lectus non ipsum rutrum sollicitudin at dapibus lorem. In ornare quam sed mi tincidunt eleifend. Ut pharetra sollicitudin velit in tempus. Nam ultricies ex in ante scelerisque, et venenatis sem commodo. Fusce ac blandit magna, eu rutrum lectus. Mauris mollis nibh nunc, at tincidunt turpis varius a. Donec eget elit sed ante lacinia lobortis.",
+            roles: [
+                { name: "Front-End Developer" }
+            ],
+            techStack: [
+                { name: "HTML" },
+                { name: "CSS" },
+            ],
+            images: [
+                { src: "/projects/skwebsite.png", alt: "Project 3 - Image 1" },
+                { src: "/projects/capsproj.PNG", alt: "Project 3 - Image 2" },
+                { src: "/projects/invpos.PNG", alt: "Project 3 - Image 3" },
+                { src: "/projects/skwebsite.png", alt: "Project 3 - Image 4" },
+            ],
+            link: ""
+        }, {
+            id: 3,
             name: "Hardware Inventory & Point of Sales System",
             description: "Integer vel commodo nibh. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Fusce metus risus, ultricies quis metus vel, luctus scelerisque metus. Etiam sit amet lectus non ipsum rutrum sollicitudin at dapibus lorem. In ornare quam sed mi tincidunt eleifend. Ut pharetra sollicitudin velit in tempus. Nam ultricies ex in ante scelerisque, et venenatis sem commodo. Fusce ac blandit magna, eu rutrum lectus. Mauris mollis nibh nunc, at tincidunt turpis varius a. Donec eget elit sed ante lacinia lobortis.",
             roles: [
@@ -79,25 +98,6 @@ export default function Projects() {
             images: [
                 { src: "/projects/invpos.PNG", alt: "Project 2 - Image 1" },
                 { src: "/projects/capsproj.PNG", alt: "Project 2 - Image 2" },
-            ],
-            link: ""
-        },
-        {
-            id: 3,
-            name: "Secure Profiling System with Role-Based Access Control and Automated Announcements",
-            description: "Integer vel commodo nibh. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Fusce metus risus, ultricies quis metus vel, luctus scelerisque metus. Etiam sit amet lectus non ipsum rutrum sollicitudin at dapibus lorem. In ornare quam sed mi tincidunt eleifend. Ut pharetra sollicitudin velit in tempus. Nam ultricies ex in ante scelerisque, et venenatis sem commodo. Fusce ac blandit magna, eu rutrum lectus. Mauris mollis nibh nunc, at tincidunt turpis varius a. Donec eget elit sed ante lacinia lobortis.",
-            roles: [
-                { name: "Front-End Developer" }
-            ],
-            techStack: [
-                { name: "HTML" },
-                { name: "CSS" },
-            ],
-            images: [
-                { src: "/projects/skwebsite.png", alt: "Project 3 - Image 1" },
-                { src: "/projects/capsproj.PNG", alt: "Project 3 - Image 2" },
-                { src: "/projects/invpos.PNG", alt: "Project 3 - Image 3" },
-                { src: "/projects/skwebsite.png", alt: "Project 3 - Image 4" },
             ],
             link: ""
         },
@@ -197,7 +197,7 @@ export default function Projects() {
                                         style={{ fontFamily: 'var(--Instrument-Serif)' }}
                                     >{project.name}</h2>
                                     <span>
-                                        <span className='text-sm text-slate-500'>Role: &nbsp;</span>
+                                        <span className='text-xs fomt-semibold text-slate-500'>Role: &nbsp;</span>
                                         {project.roles.map((role, index) => (
                                             <span
                                                 key={index}
@@ -209,6 +209,7 @@ export default function Projects() {
                                     </span>
                                     <p className='text-sm text-[var(--text-color)]/80 text-center my-2'>{project.description}</p>
                                     <span>
+                                        <span className='text-xs fomt-semibold text-slate-500'>Tech Stack: <br /></span>
                                         {project.techStack.map((techstack, index) => (
                                             <span
                                                 key={index}

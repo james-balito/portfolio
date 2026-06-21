@@ -49,7 +49,7 @@ export default function NavBar({ toggleDarkMode, isDarkMode }: DarkModeProps) {
                     {/* Logo */}
                     <a href="#home" className="text-2xl">
                         <span className="text-lg text-[var(--logo-symbol-color)]">&lt;</span>
-                        <span className="font-semibold text-[var(--logo-color)]" style = {{fontFamily: 'var(--Fira-Mode)'}}>JB</span>
+                        <span className="font-semibold text-[var(--logo-color)]" style={{ fontFamily: 'var(--Fira-Mode)' }}>JB</span>
                         <span className="text-lg text-[var(--logo-symbol-color)]">/&gt;</span>
                     </a>
 
@@ -73,7 +73,17 @@ export default function NavBar({ toggleDarkMode, isDarkMode }: DarkModeProps) {
                                 fontWeight: 100
                             }}
                         >
-                            About
+                            Abouts
+                        </a>
+                        <a
+                            href="#certifications"
+                            className="text-[var(--text-color)] text-sm font-thin hover:text-[var(--secondary-color)] transition-colors"
+                            style={{
+                                fontFamily: 'var(--Poppins)',
+                                fontWeight: 100
+                            }}
+                        >
+                            Certificates
                         </a>
                         <a
                             href="#projects"
@@ -85,20 +95,14 @@ export default function NavBar({ toggleDarkMode, isDarkMode }: DarkModeProps) {
                         >
                             Projects
                         </a>
+
                         <a
                             href="#contact"
-                            className="text-[var(--text-color)] text-sm font-thin hover:text-[var(--secondary-color)] transition-colors"
-                            style={{
-                                fontFamily: 'var(--Poppins)',
-                                fontWeight: 100
-                            }}
+                            className="h-9 flex items-center justify-center px-4 border border-[var(--secondary-color)]/50 bg-transparent rounded-xl text-[var(--secondary-color)] font-medium transition-all duration-300 hover:bg-[var(--secondary-color)] hover:text-white cursor-pointer text-sm hover:font-medium"
+                            style={{ fontFamily: 'var(--Poppins)' }}
                         >
-                            Contact
+                            Book a Call
                         </a>
-
-                        <div className="h-9 flex items-center justify-center px-4 border border-[var(--secondary-color)]/50 bg-transparent rounded-xl text-[var(--secondary-color)] font-medium transition-all duration-300 hover:bg-[var(--secondary-color)] hover:text-white cursor-pointer">
-                            <a href="#contact" className = "text-sm hover:font-medium" style = {{fontFamily: 'var(--Poppins)'}}>Book a Call</a>
-                        </div>
 
                         <button onClick={toggleDarkMode} className="transition-all duration-300">
                             {isDarkMode ? (
