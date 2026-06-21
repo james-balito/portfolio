@@ -2,19 +2,14 @@ import { Moon, Sun } from "lucide-react"
 import { useState, useEffect, useRef } from "react"
 import gsap from 'gsap'
 
-interface DarkModeProps {
-    toggleDarkMode: () => void
-    isDarkMode: boolean
-}
-
-export default function NavBar({ toggleDarkMode, isDarkMode }: DarkModeProps) {
+export default function NavBar() {
     const [scrolled, setScrolled] = useState(false)
     const navRef = useRef(null)
     const animationRef = useRef<gsap.core.Tween | null>(null)
 
     useEffect(() => {
         const handleScroll = () => {
-            const isScrolled = window.scrollY > 0
+            const isScrolled = window.scrollY > 10
             setScrolled(isScrolled)
 
             // Animate the top offset smoothly
@@ -24,8 +19,6 @@ export default function NavBar({ toggleDarkMode, isDarkMode }: DarkModeProps) {
 
             animationRef.current = gsap.to(navRef.current, {
                 top: isScrolled ? '8px' : '0px', // 8px ≈ top-2
-                duration: 0.3,
-                ease: 'power2.out'
             })
         }
 
@@ -73,17 +66,17 @@ export default function NavBar({ toggleDarkMode, isDarkMode }: DarkModeProps) {
                                 fontWeight: 100
                             }}
                         >
-                            Abouts
+                            About
                         </a>
                         <a
-                            href="#certifications"
+                            href="#experience"
                             className="text-[var(--text-color)] text-sm font-thin hover:text-[var(--secondary-color)] transition-colors"
                             style={{
                                 fontFamily: 'var(--Poppins)',
                                 fontWeight: 100
                             }}
                         >
-                            Certificates
+                            Experience
                         </a>
                         <a
                             href="#projects"
@@ -103,14 +96,6 @@ export default function NavBar({ toggleDarkMode, isDarkMode }: DarkModeProps) {
                         >
                             Book a Call
                         </a>
-
-                        <button onClick={toggleDarkMode} className="transition-all duration-300">
-                            {isDarkMode ? (
-                                <Sun className="w-5 h-5 text-[var(--secondary-color)] hover:text-[var(--secondary-color)]/70 hover:cursor-pointer" />
-                            ) : (
-                                <Moon className="w-5 h-5 text-[var(--secondary-color)] hover:text-[var(--secondary-color)]/70 hover:cursor-pointer" />
-                            )}
-                        </button>
                     </div>
 
                     {/* Mobile Menu Button */}

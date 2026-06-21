@@ -21,7 +21,7 @@ export default function Certifications() {
     ]
 
     return (
-        <div className='flex flex-col justify-center items-center py-24'>
+        <section id='certifications' className='flex flex-col justify-center items-center py-24'>
             <h1
                 className="text-3xl flex justify-center items-center mb-20"
                 style={{
@@ -70,6 +70,6 @@ export default function Certifications() {
                     </a>
                 ))}
             </div>
-        </div>
+        </section>
     )
 }

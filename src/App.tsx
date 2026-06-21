@@ -5,10 +5,10 @@ import Body from './layout/body'
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 function App() {
-  const [isDarkMode, setIsDarkMode] = useState(() => {
-    const saved = localStorage.getItem('theme');
-    return saved === 'dark';
-  });
+  // const [isDarkMode, setIsDarkMode] = useState(() => {
+  //   const saved = localStorage.getItem('theme');
+  //   return saved === 'dark';
+  // });
   const [showMainContent, setShowMainContent] = useState(false);
 
   const bodyRef = useRef(null);
@@ -16,15 +16,15 @@ function App() {
   const introTextRef = useRef(null);
   const overlayRef = useRef(null);
 
-  useEffect(() => {
-    if (isDarkMode) {
-      document.documentElement.classList.add('light');
-      localStorage.setItem('theme', 'dark');
-    } else {
-      document.documentElement.classList.remove('light');
-      localStorage.setItem('theme', 'light');
-    }
-  }, [isDarkMode]);
+  // useEffect(() => {
+  //   if (isDarkMode) {
+  //     document.documentElement.classList.add('light');
+  //     localStorage.setItem('theme', 'dark');
+  //   } else {
+  //     document.documentElement.classList.remove('light');
+  //     localStorage.setItem('theme', 'light');
+  //   }
+  // }, [isDarkMode]);
 
   // Opening animation with text reveal
   useEffect(() => {
@@ -82,9 +82,9 @@ function App() {
     }, "-=0.3");
   };
 
-  const toggleDarkMode = () => {
-    setIsDarkMode(!isDarkMode);
-  };
+  // const toggleDarkMode = () => {
+  //   setIsDarkMode(!isDarkMode);
+  // };
 
   gsap.registerPlugin(ScrollTrigger);
 
@@ -106,7 +106,7 @@ function App() {
       </div>
 
       <div ref={bodyRef} className='opacity-0'>
-        <Body toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode}/>
+        <Body/>
       </div>
     </div>
   )

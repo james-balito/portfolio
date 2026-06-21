@@ -69,8 +69,8 @@ export default function WorkExperience() {
             ease: "none",
             scrollTrigger: {
                 trigger: containerRef.current,
-                start: "top 80%", // Spans exactly across viewport middle axis
-                end: "bottom 80%",
+                start: "top 50%", // Spans exactly across viewport middle axis
+                end: "bottom 50%",
                 scrub: 0.5,
             }
         });
@@ -106,7 +106,7 @@ export default function WorkExperience() {
     });
 
     return (
-        <section ref={sectionRef} className="relative py-24 overflow-hidden w-full text-slate-100 flex flex-col items-center">
+        <section ref={sectionRef} id = "experience" className="relative py-24 overflow-hidden w-full text-slate-100 flex flex-col items-center">
             {/* Background Aesthetic Striped Grid Lines matching wireframe */}
             <div className="absolute inset-0 grid grid-cols-6 md:grid-cols-12 pointer-events-none opacity-[0.03] border-x border-slate-500">
                 {[...Array(12)].map((_, i) => <div key={i} className="border-r border-slate-500 h-full" />)}

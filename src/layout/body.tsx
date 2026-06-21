@@ -6,42 +6,28 @@ import Projects from '../components/ui/project';
 import Home from '../components/ui/home';
 import Certifications from '../components/ui/certifications';
 import TechStackCarousel from '../components/ui/techstack-carousel';
+import Footer from '../components/ui/footer';
 
-interface BodyProps {
-    toggleDarkMode: () => void
-    isDarkMode: boolean
-}
+// interface BodyProps {
+//     toggleDarkMode: () => void
+//     isDarkMode: boolean
+// }
 
-export default function Body({ toggleDarkMode, isDarkMode }: BodyProps) {
+export default function Body() {
 
     return (
         <>
-            <NavBar toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode} />
-
-            <section id="home">
+            <div className = 'mx-30'>
+                <NavBar />
                 <Home />
                 <TechStackCarousel />
-            </section>
-
-            <section id="about">
                 <About />
-            </section>
-
-            <section id="experience">
-                <WorkExperience />
-            </section>
-
-            <section id="certifications">
                 <Certifications />
-            </section>
-
-            <section id="projects">
+                <WorkExperience />
                 <Projects />
-            </section>
-
-            <section id="contact">
                 <Contact />
-            </section>
+            </div>
+            <Footer />
         </>
     )
 }

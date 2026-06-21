@@ -8,6 +8,7 @@
 @import '@fontsource/poppins';
 @import '@fontsource/bodoni-moda';
 @import '@fontsource/tienne';
+@import '@fontsource/anton';
 
 /* Dark theme (default) */
 :root {
@@ -31,10 +32,11 @@
     --Bodoni-Moda: 'Bodoni Moda', serif;
     --Tienne: 'Tienne';
     --Fira-Code: 'Fira Code', monospace;
+    --Anton: 'Anton';
 }
 
 /* Light theme - applied when .dark class exists */
-.light {
+/* .light {
     --primary-color: #F5F5F5;
     --logo-color: #3b82f6;
     --logo-symbol-color: #0f172a;
@@ -44,18 +46,7 @@
     --secondary-color: #3b82f6;
     --nav-bg: rgba(3, 56, 135, 0.105);
     --border-color: rgba(7, 24, 120, 0.125);
-
-    /* Fonts */
-    --Inter: 'Inter', sans-serif;
-    --Archivo-Black: 'Archivo Black', sans-serif;
-    --Instrument-Serif: 'Instrument Serif', italic;
-    --Playfair-Display: 'Playfair Display', serif;
-    --Jetbrains-Mono: 'Jetbrains Mono', monospace;
-    --Poppins: 'Poppins', monospace;
-    --Bodoni-Moda: 'Bodoni Moda', serif;
-    --Tienne: 'Tienne';
-    --Fira-Code: 'Fira Code', monospace;
-}
+} */
 
 /* 
 * {
@@ -64,9 +55,31 @@
     box-sizing: border-box;
 } */
 
+/* ✅ Smooth scroll behavior */
+html {
+    scroll-behavior: smooth; /* Offset for fixed navbar */
+}
+
+/* ✅ Smooth scroll for all elements */
+@media (prefers-reduced-motion: no-preference) {
+    html {
+        scroll-behavior: smooth;
+    }
+    
+    /* Smooth scroll for anchor links */
+    a[href^="#"] {
+        scroll-behavior: smooth;
+    }
+    
+    /* Smooth scroll for all scrollable containers */
+    * {
+        scroll-behavior: smooth;
+    }
+}
+
 body {
     color: var(--text-color);
-    margin-inline: 120px;
+    margin-block: 13px;
     background-color: var(--primary-color);
     color: var(--text-color);
 }
@@ -75,7 +88,7 @@ body {
     font-family: var(--Inter)
 }
 
-#nav {
+#na {
     margin-top: 20px;
     padding-inline: px;
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);

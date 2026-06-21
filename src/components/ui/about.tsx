@@ -2,6 +2,7 @@ import { useRef } from 'react'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import GitHubContributions from './github-contributions';
 
 export default function About() {
     const sectionRef = useRef<HTMLElement>(null);
@@ -9,31 +10,13 @@ export default function About() {
     const aboutheaderRef = useRef<HTMLHeadingElement>(null);
     const headerRef = useRef<HTMLHeadingElement>(null);
     const paragraphRef = useRef<HTMLParagraphElement>(null);
-    const techStack1Ref = useRef<HTMLDivElement>(null);
-    const techStack2Ref = useRef<HTMLDivElement>(null);
     const captionRef = useRef<HTMLDivElement>(null);
-
-    const primaryTechStack = [
-        { id: 1, label: 'Laravel' },
-        { id: 2, label: 'PHP' },
-        { id: 3, label: 'React.js' },
-        { id: 4, label: 'Inertia.js' },
-    ];
-
-    const secondaryTechStack = [
-        { id: 5, label: 'JavaScript' },
-        { id: 6, label: 'HTML5' },
-        { id: 7, label: 'CSS3' },
-        { id: 8, label: 'TailwindCSS' },
-    ]
 
     gsap.registerPlugin(ScrollTrigger);
 
     useGSAP(() => {
-        // ✅ Store in variables with type assertion
-        const wordWrappers = paragraphRef.current?.querySelectorAll('.word-wrapper');
-        const techBadges1 = techStack1Ref.current?.querySelectorAll('.tech-badge1');
-        const techBadges2 = techStack2Ref.current?.querySelectorAll('.tech-badge2');
+        // ✅ Select all word elements directly
+        const wordElements = paragraphRef.current?.querySelectorAll('.word');
 
         // Set initial states for ALL elements
         gsap.set([aboutheaderRef.current, imgRef.current], {
@@ -46,35 +29,17 @@ export default function About() {
             x: -30
         });
 
-        gsap.set(paragraphRef.current, {
+        gsap.set(captionRef.current, {
             opacity: 0,
             y: 20
         });
 
-        gsap.set(captionRef.current, {
-            opacity: 0,
-            y: 20
-        })
-
-        // ✅ Check before using
-        if (wordWrappers && wordWrappers.length > 0) {
-            gsap.set(wordWrappers, {
+        // ✅ Set initial state for each word
+        if (wordElements && wordElements.length > 0) {
+            gsap.set(wordElements, {
                 opacity: 0,
-                y: 15,
-            });
-        }
-
-        if (techBadges1 && techBadges1.length > 0) {
-            gsap.set(techBadges1, {
-                opacity: 0,
-                scale: 0.8,
-            });
-        }
-
-        if (techBadges2 && techBadges2.length > 0) {
-            gsap.set(techBadges2, {
-                opacity: 0,
-                scale: 0.8,
+                x:-10,
+                rotation: 0,
             });
         }
 
@@ -101,7 +66,7 @@ export default function About() {
         // Animate image with slight delay
         if (imgRef.current) {
             tl.to(imgRef.current, {
-                x: 0,
+                y: 0,
                 opacity: 1,
                 duration: 0.8,
                 ease: "power3.out",
@@ -118,28 +83,19 @@ export default function About() {
             }, "-=0.5");
         }
 
-        // Animate paragraph container
-        if (paragraphRef.current) {
-            tl.to(paragraphRef.current, {
-                y: 0,
+        // ✅ Animate each word with stagger - smooth fade in from bottom
+        if (wordElements && wordElements.length > 0) {
+            tl.to(wordElements, {
                 opacity: 1,
-                duration: 0.5,
-                ease: "power2.out"
-            }, "-=0.2");
-        }
-
-        // ✅ Animate each word with stagger - check if exists
-        if (wordWrappers && wordWrappers.length > 0) {
-            tl.to(wordWrappers, {
-                y: 0,
-                opacity: 1,
-                duration: 0.4,
+                x: 0,
+                duration: 0.6,
+                ease: "power3.out",
                 stagger: {
-                    each: 0.03,
+                    each: 0.01,
                     from: "start",
                     ease: "power2.out"
                 }
-            }, "-=0.2");
+            }, "-=0.3");
         }
 
         if (captionRef.current) {
@@ -151,38 +107,29 @@ export default function About() {
             }, "-=0.5");
         }
 
-        // ✅ Animate tech badges 1 - check if exists
-        if (techBadges1 && techBadges1.length > 0) {
-            tl.to(techBadges1, {
-                opacity: 1,
-                scale: 1,
-                duration: 0.3,
-                stagger: {
-                    each: 0.05,
-                    from: "start",
-                    ease: "back.out(1.5)"
-                }
-            }, "-=0.2");
-        }
-
-        // ✅ Animate tech badges 2 - check if exists
-        if (techBadges2 && techBadges2.length > 0) {
-            tl.to(techBadges2, {
-                opacity: 1,
-                scale: 1,
-                duration: 0.3,
-                stagger: {
-                    each: 0.05,
-                    from: "start",
-                    ease: "back.out(1.5)"
-                }
-            }, "-=0.2");
-        }
-
     }, []);
 
+    // ✅ Split text into words for animation
+    const aboutText = `I specialize in both frontend and backend development, focusing on transforming complex ideas into efficient, scalable digital processes. Guided by a strong foundation in system analysis, I take full ownership of the development process, ensuring a smooth lifecycle to build secure, high-performance web applications from the ground up.`;
+
+    const renderAnimatedText = (text: string) => {
+        return text.split(' ').map((word, index) => (
+            <span
+                key={index}
+                className="word inline-block"
+                aria-hidden="true"
+            >
+                <span className="word-inner inline-block">
+                    {word}
+                </span>
+                {/* Add space after each word except the last */}
+                {index < text.split(' ').length - 1 && '\u00A0'}
+            </span>
+        ));
+    };
+
     return (
-        <section ref={sectionRef} className="overflow-hidden">
+        <section ref={sectionRef} id="about" className="overflow-hidden">
             <h1
                 style={{
                     fontFamily: 'var(--Instrument-Serif)',
@@ -195,7 +142,7 @@ export default function About() {
                 About Me
             </h1>
 
-            <div className='flex justify-between py-15 grid grid-cols-12 gap-4'>
+            <div className='flex justify-between py-15 grid grid-cols-12'>
                 <img
                     src="/about-me.jpg"
                     alt="James Balito"
@@ -204,75 +151,41 @@ export default function About() {
                         height: '450px',
                         width: '416px'
                     }}
-                    className='mx-10 col-start-1 col-span-4'
+                    className='mx-10 col-start-1 col-span-5'
                     ref={imgRef}
                 />
 
-                <div className='justify-center items-center my-15 px-10 col-start-7 col-span-6'>
-                    <h1
-                        ref={headerRef}
-                        className="flex justify-start items-right text-lg font-bold mb-4"
-                        style={{ fontFamily: 'var(--Inter)' }} 
-                    >
-                        I'm
-                        <span style={{ fontFamily: 'var(--Tienne)' }} className="text-2xl">
+                <div className='items-center col-start-8 col-span-5 mt-3'>
+                    <div ref={headerRef}>
+                        <h1
+                            className="flex justify-start items-right text-sm font-thin"
+                            style={{ fontFamily: 'var(--Inter)' }}
+                        >
+                            Hi! My name is
+                        </h1>
+                        <span style={{ fontFamily: 'var(--Archivo-Black)' }} className="text-4xl -ml-3">
                             &nbsp;JAMES
                         </span>
-                        <span style={{ fontFamily: 'var(--Tienne)' }} className="text-2xl">
+                        <span style={{ fontFamily: 'var(--Archivo-Black)' }} className="text-4xl text-[var(--secondary-color)]">
                             &nbsp;BALITO
                         </span>
-                    </h1>
+                    </div>
 
-
-                    <p ref={paragraphRef} className='description text-[var(--text-color)]/80 text-base leading-relaxed'>
-                        {`I specialize in both frontend and backend development, focusing on transforming complex ideas into efficient, scalable digital processes. Guided by a strong foundation in system analysis, I take full ownership of the development process, ensuring a smooth lifecycle to build secure, high-performance web applications from the ground up.`
-                            .split(/(\s+)/)
-                            .map((fragment, index) => {
-                                if (fragment.match(/^\s+$/)) {
-                                    return ' ';
-                                }
-                                return (
-                                    <span
-                                        key={index}
-                                        className="word-wrapper inline-block"
-                                        aria-hidden="true"
-                                    >
-                                        <span className="word inline-block">
-                                            {fragment}
-                                        </span>
-                                    </span>
-                                );
-                            })
-                        }
+                    {/* ✅ Animated paragraph with word-by-word reveal */}
+                    <p 
+                        ref={paragraphRef} 
+                        className='description text-[var(--text-color)] text-base leading-relaxed mt-2 -mb-15'
+                    >
+                        {renderAnimatedText(aboutText)}
                     </p>
 
-                    <div ref={captionRef} className='py-4 -mb-6'>
-                        <span className='text-slate-400 text-sm'>Primary working on:</span>
-                    </div>
-
-                    <div ref={techStack1Ref} className='flex flex-wrap mt-5'>
-                        {primaryTechStack.map((techStack) => (
-                            <span
-                                key={techStack.id}
-                                className='tech-badge1 border border-[var(--secondary-color)] bg-[var(--secondary-color)]/30 rounded-full px-3 py-1 mr-4 text-xs font-semibold text-[var(--text-color)] transition-all duration-300 w-fit'
-                            >
-                                {techStack.label}
-                            </span>
-                        ))}
-                    </div>
-
-                    <div ref={techStack2Ref} className='flex flex-wrap'>
-                        {secondaryTechStack.map((techStack) => (
-                            <span
-                                key={techStack.id}
-                                className='tech-badge2 border border-[var(--secondary-color)] bg-[var(--secondary-color)]/30 rounded-full px-3 py-1 mt-2 mr-4 text-xs font-semibold text-[var(--text-color)] transition-all duration-300 w-fit'
-                            >
-                                {techStack.label}
-                            </span>
-                        ))}
-                    </div>
+                    <GitHubContributions />
                 </div>
             </div>
-        </section >
+
+            <div>
+                <h1>Technologies and Tools</h1>
+            </div>
+        </section>
     )
 }

@@ -158,7 +158,7 @@ export default function Projects() {
 
     return (
         <>
-            <div ref={sectionRef} className="flex flex-col items-center justify-center py-20">
+            <section ref={sectionRef} id = "projects" className="flex flex-col items-center justify-center py-20">
                 <h1
                     ref={titleRef}
                     className="text-3xl mt-10 mb-30"
@@ -224,7 +224,7 @@ export default function Projects() {
                         </a>
                     ))}
                 </div>
-            </div>
+            </section>
         </>
     )
 }

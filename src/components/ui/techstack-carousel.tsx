@@ -28,10 +28,10 @@ export default function TechStackCarousel() {
         const techItems = gsap.utils.toArray(".tech-item");
 
         // Set initial states
-        gsap.set([titleRef.current, subtitleRef.current], {
-            opacity: 0,
-            y: 30
-        });
+        // gsap.set([titleRef.current, subtitleRef.current], {
+        //     opacity: 0,
+        //     y: 30
+        // });
 
         gsap.set(carouselRef.current, {
             opacity: 0,
@@ -51,24 +51,24 @@ export default function TechStackCarousel() {
                 start: "top 100%",
                 end: "top 100%",
                 toggleActions: "play none none reverse",
-                markers: true, // Uncomment to debug
+                // markers: true, // Uncomment to debug
             }
         });
 
         // Animate everything in sequence
-        tl.to(titleRef.current, {
-            opacity: 1,
-            y: 0,
-            duration: 0.4,
-            ease: "power2.out(1.7)"
-        })
-            .to(subtitleRef.current, {
-                opacity: 1,
-                y: 0,
-                duration: 0.5,
-                ease: "power2.out"
-            }, "-=0.3")
-            .to(carouselRef.current, {
+        // tl.to(titleRef.current, {
+        //     opacity: 1,
+        //     y: 0,
+        //     duration: 0.4,
+        //     ease: "power2.out(1.7)"
+        // })
+        //     .to(subtitleRef.current, {
+        //         opacity: 1,
+        //         y: 0,
+        //         duration: 0.5,
+        //         ease: "power2.out"
+        //     }, "-=0.3")
+            tl.to(carouselRef.current, {
                 opacity: 1,
                 y: 0,
                 scale: 1,
@@ -86,7 +86,7 @@ export default function TechStackCarousel() {
     return (
         <>
             <section ref={sectionRef} className="relative mt-10">
-                <h1
+                {/* <h1
                     ref={titleRef}
                     style={{ fontFamily: 'var(--Instrument-Serif)' }}
                     className="flex justify-center font-black text-2xl text-[var(--text-color)] mt-20"
@@ -98,10 +98,10 @@ export default function TechStackCarousel() {
                     className="flex justify-center text-[var(--text-color)]/70"
                 >
                     Languages & Frameworks I acquired knowledge in
-                </p>
+                </p> */}
 
                 <div className="flex justify-center">
-                    <div ref={carouselRef} className="relative w-[91%] overflow-hidden my-6">
+                    <div ref={carouselRef} className="relative overflow-hidden  ">
                         <div className="overflow-hidden mask-gradient">
                             <div className="flex animate-endless-scroll gap-10">
                                 {[...techStack, ...techStack, ...techStack].map((tech, i) => (
@@ -115,8 +115,7 @@ export default function TechStackCarousel() {
                                             className="w-15 h-15 object-contain transition-all duration-300 
                                            brightness-75 contrast-125 saturate-0 grayscale
                                            group-hover:brightness-100 group-hover:contrast-100 
-                                           group-hover:saturate-100 group-hover:grayscale-0
-                                           group-hover:scale-110"
+                                           group-hover:saturate-100 group-hover:grayscale-0 group-hover:cursor-pointer"
                                         />
                                         <span className="text-xs font-medium text-[var(--text-color)]/0 group-hover:text-[var(--text-color)]/70 transition-all duration-300">
                                             {tech.name}
