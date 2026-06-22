@@ -5,8 +5,8 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 export default function TechStackCarousel() {
     const sectionRef = useRef(null);
-    const titleRef = useRef(null);
-    const subtitleRef = useRef(null);
+    // const titleRef = useRef(null);
+    // const subtitleRef = useRef(null);
     const carouselRef = useRef(null);
 
     const techStack = [
@@ -103,16 +103,16 @@ export default function TechStackCarousel() {
                 <div className="flex justify-center">
                     <div ref={carouselRef} className="relative overflow-hidden  ">
                         <div className="overflow-hidden mask-gradient">
-                            <div className="flex animate-endless-scroll gap-10">
+                            <div className="flex animate-endless-scroll gap-3 xl:gap-10">
                                 {[...techStack, ...techStack, ...techStack].map((tech, i) => (
                                     <div
                                         key={i}
-                                        className="tech-item group mx-2 w-28 h-28 flex flex-col items-center justify-center gap-2 rounded-xl flex-shrink-0 transition-all duration-300"
+                                        className="tech-item group mx-2 xl:w-28 xl:h-28 flex flex-col items-center justify-center gap-2 rounded-xl flex-shrink-0 transition-all duration-300"
                                     >
                                         <img
                                             src={tech.icon}
                                             alt={tech.name}
-                                            className="w-15 h-15 object-contain transition-all duration-300 
+                                            className="w-10 h-10 md:w-15 md:h-15 lg:w-15 lg:h-15 xl:w-15 xl:h-15 object-contain transition-all duration-300 
                                            brightness-75 contrast-125 saturate-0 grayscale
                                            group-hover:brightness-100 group-hover:contrast-100 
                                            group-hover:saturate-100 group-hover:grayscale-0 group-hover:cursor-pointer"

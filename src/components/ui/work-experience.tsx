@@ -69,8 +69,8 @@ export default function WorkExperience() {
             ease: "none",
             scrollTrigger: {
                 trigger: containerRef.current,
-                start: "top 50%", // Spans exactly across viewport middle axis
-                end: "bottom 50%",
+                start: "top 70%", // Spans exactly across viewport middle axis
+                end: "bottom 70%",
                 scrub: 0.5,
             }
         });
@@ -117,16 +117,16 @@ export default function WorkExperience() {
                 <h2
                     ref={titleRef}
                     style={{ fontFamily: 'var(--Instrument-Serif, serif)', fontStyle: 'italic' }}
-                    className="text-xl md:text-3xl text-center mb-24 text-[var(--text-color)] font-light tracking-wide"
+                    className="text-2xl md:text-3xl text-center mb-24 text-[var(--text-color)] font-light tracking-wide"
                 >
                     Professional Experience
                 </h2>
 
                 {/* Central Timeline Component Core Wrapper */}
-                <div className="relative w-full">
+                <div className="relative w-full ">
 
                     {/* Absolute Vector Core Center Guide Rail */}
-                    <div className="absolute left-4 md:left-1/2 top-0 bottom-0 transform md:-translate-x-1/2 w-0.5 pointer-events-none">
+                    <div className="absolute left-0 lg:left-4 xl:left-125 md:left-1/2 top-0 bottom-0 transform md:-translate-x-1/2 w-0.5 pointer-events-none">
                         {/* Background Base Track Line */}
                         <div ref={lineRef} className="w-full h-full bg-gradient-to-b from-blue-500/50 via-indigo-500/50 to-transparent" />
 
@@ -148,22 +148,22 @@ export default function WorkExperience() {
                                 <div
                                     key={experience.id}
                                     ref={(el) => { if (el) experienceRefs.current[index] = el; }}
-                                    className={`relative flex flex-col md:flex-row items-start w-full ${isEven ? 'md:justify-start' : 'md:justify-end'
+                                    className={`relative flex flex-col md:flex-row items-start w-full ${isEven ? 'md:justify-start lg:justify-start xl:justify-start' : 'md:justify-end lg:justify-end xl:justify-end'
                                         }`}
                                 >
                                     {/* Structural Content Layout Block */}
-                                    <div className={`w-full md:w-[calc(50%-2.5rem)] pl-12 md:pl-0 ${isEven ? 'md:text-left' : 'md:text-left'
+                                    <div className={`w-full md:w-[calc(50%-2.5rem)] xl:w-[calc(51%-2.5rem)] lg:w-[calc(50%-2.5rem)] pl-5 md:pl-12 lg:pl-12 xl:pl-12 md:pl-0 ${isEven ? 'md:text-left xl:text-left' : 'md:text-left xl:text-normal'
                                         }`}>
 
                                         {/* Interactive Main Dashboard Entry Card Panel */}
-                                        <div className="card-content bg-[#111827]/60 border border-slate-800/80 rounded-2xl p-6 md:p-8 backdrop-blur-md hover:border-blue-500/50 transition-colors duration-300 shadow-xl">
+                                        <div className="card-content bg-[#111827]/60 border border-slate-800/80 rounded-2xl p-6 xl:p-6 md:p-8 backdrop-blur-md hover:border-blue-500/50 transition-colors duration-300 shadow-xl">
 
                                             {/* Header Header Info Metrics */}
-                                            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-                                                <h3 style={{ fontFamily: 'var(--Instrument-Serif, serif)', fontStyle: 'italic' }} className="text-2xl font-normal text-white">
+                                            <div className="flex flex-row xl:flex-row justify-between gap-2">
+                                                <h3 style={{ fontFamily: 'var(--Instrument-Serif, serif)', fontStyle: 'italic' }} className="text-lg md:text-2xl lg: xl:text-2xl font-normal text-white">
                                                     {experience.position}
                                                 </h3>
-                                                <span className="text-sm font-medium text-slate-400 bg-slate-900/80 px-3 py-1 rounded-full border border-slate-800 self-start sm:self-auto">
+                                                <span className="text-xs md:text-sm lg:text-sm xl:text-sm font-base text-slate-400 py-2 xl:py-2 self-start sm:self-auto xl:self-start">
                                                     {experience.period}
                                                 </span>
                                             </div>

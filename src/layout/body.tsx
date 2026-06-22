@@ -17,7 +17,7 @@ export default function Body() {
 
     return (
         <>
-            <div className = 'mx-30'>
+            <div className = 'mx-5 md:mx-10  xl:mx-30'>
                 <NavBar />
                 <Home />
                 <TechStackCarousel />

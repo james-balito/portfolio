@@ -1,122 +1,231 @@
+"use client"
+
+import { useState } from 'react';
+import { Button } from '../button';
+import { FaGithub, FaLinkedin } from 'react-icons/fa';
+import { HiOutlineMail } from 'react-icons/hi';
+import { CheckCircle, X } from 'lucide-react';
+
 export default function Contact() {
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        subject: '',
+        message: ''
+    });
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [toast, setToast] = useState<{
+        show: boolean;
+        message: string;
+        type: 'success' | 'error';
+    }>({ show: false, message: '', type: 'success' });
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        setFormData({
+            ...formData,
+            [e.target.name]: e.target.value
+        });
+    };
+
+    const showToast = (message: string, type: 'success' | 'error') => {
+        setToast({ show: true, message, type });
+
+        setTimeout(() => {
+            setToast({ show: false, message: '', type: 'success' });
+        }, 4000);
+    };
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setIsSubmitting(true);
+
+        try {
+            await new Promise(resolve => setTimeout(resolve, 1500));
+
+            setFormData({ name: '', email: '', subject: '', message: '' });
+            showToast('Message sent successfully! I\'ll get back to you soon.', 'success');
+
+        } catch (error) {
+            showToast('Failed to send message. Please try again.', 'error');
+        } finally {
+            setIsSubmitting(false);
+        }
+    };
+
     return (
-        <section id = "contact" className='flex flex-col justify-center items-center py-24'>
+        <section id="contact" className='flex flex-col justify-center items-center py-24'>
             <h1
-                className="text-3xl mb-20"
+                className="text-3xl mb-6"
                 style={{
                     fontFamily: 'var(--Instrument-Serif)',
                     fontStyle: 'italic'
                 }}
             >
-                Contact
+                Connect with Me
             </h1>
-            <form className="w-full max-w-lg">
-                <div className="flex flex-wrap -mx-3 mb-6">
-                    <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                        <label
-                            className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                            htmlFor="grid-first-name"
-                        >
-                            First Name
-                        </label>
-                        <input
-                            className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-                            id="grid-first-name"
-                            type="text"
-                            placeholder="Jane"
-                        />
-                        <p className="text-red-500 text-xs italic">Please fill out this field.</p>
-                    </div>
-                    <div className="w-full md:w-1/2 px-3">
-                        <label
-                            className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                            htmlFor="grid-last-name"
-                        >
-                            Last Name
-                        </label>
-                        <input
-                            className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                            id="grid-last-name"
-                            type="text"
-                            placeholder="Doe"
-                        />
-                    </div>
-                </div>
-                <div className="flex flex-wrap -mx-3 mb-6">
-                    <div className="w-full px-3">
-                        <label
-                            className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                            htmlFor="grid-password"
-                        >
-                            Password
-                        </label>
-                        <input
-                            className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                            id="grid-password"
-                            type="password"
-                            placeholder="******************"
-                        />
-                        <p className="text-gray-600 text-xs italic">Make it as long and as crazy as you'd like</p>
-                    </div>
-                </div>
-                <div className="flex flex-wrap -mx-3 mb-2">
-                    <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-                        <label
-                            className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                            htmlFor="grid-city"
-                        >
-                            City
-                        </label>
-                        <input
-                            className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                            id="grid-city"
-                            type="text"
-                            placeholder="Albuquerque"
-                        />
-                    </div>
-                    <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-                        <label
-                            className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                            htmlFor="grid-state"
-                        >
-                            State
-                        </label>
-                        <div className="relative">
-                            <select
-                                className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                                id="grid-state"
+
+            <p className='text-center text-[var(--text-color)]/70 text-base max-w-xl mb-10 leading-relaxed'>
+                Have a project in mind, a collaboration opportunity, or just want to say hello?
+                I'm always open to discussing new ideas, innovative solutions, and exciting ventures.
+                Drop me a message and let's build something great together.
+            </p>
+
+            <div className='flex gap-6 mb-12'>
+                <a
+                    href="mailto:jamesbalito@gmail.com"
+                    className='flex items-center gap-2 text-sm text-[var(--text-color)]/70 hover:text-[var(--secondary-color)] transition-colors duration-300'
+                >
+                    <HiOutlineMail className="w-5 h-5" />
+                    <span style={{ fontFamily: 'var(--Jetbrains-Mono)' }}>Email</span>
+                </a>
+                <a
+                    href="https://github.com/james-balito"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className='flex items-center gap-2 text-sm text-[var(--text-color)]/70 hover:text-[var(--secondary-color)] transition-colors duration-300'
+                >
+                    <FaGithub className="w-5 h-5" />
+                    <span style={{ fontFamily: 'var(--Jetbrains-Mono)' }}>GitHub</span>
+                </a>
+                <a
+                    href="https://www.linkedin.com/in/jamesbalito/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className='flex items-center gap-2 text-sm text-[var(--text-color)]/70 hover:text-[var(--secondary-color)] transition-colors duration-300'
+                >
+                    <FaLinkedin className="w-5 h-5" />
+                    <span style={{ fontFamily: 'var(--Jetbrains-Mono)' }}>LinkedIn</span>
+                </a>
+            </div>
+
+            {/* ✅ Form + Toast side by side */}
+            <div className='flex items-start gap-8 max-w-2xl'>
+                {/* Form */}
+                <form onSubmit={handleSubmit} className="w-full max-w-lg space-y-5">
+                    <div className='grid grid-cols-1 md:grid-cols-2 gap-5'>
+                        <div className='space-y-2'>
+                            <label
+                                htmlFor="name"
+                                className='text-xs text-[var(--text-color)]/60'
+                                style={{ fontFamily: 'var(--Jetbrains-Mono)' }}
                             >
-                                <option>New Mexico</option>
-                                <option>Missouri</option>
-                                <option>Texas</option>
-                            </select>
-                            <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                                <svg
-                                    className="fill-current h-4 w-4"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 20 20"
-                                >
-                                    <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-                                </svg>
-                            </div>
+                                Your Name
+                            </label>
+                            <input
+                                type="text"
+                                id="name"
+                                name="name"
+                                value={formData.name}
+                                onChange={handleChange}
+                                required
+                                placeholder='John Doe'
+                                className='w-full bg-transparent border border-[var(--border-color)] rounded-lg px-4 py-2.5 text-sm text-[var(--text-color)] placeholder:text-[var(--text-color)]/30 focus:outline-none focus:border-[var(--secondary-color)]/50 transition-colors duration-300'
+                                style={{ fontFamily: 'var(--Jetbrains-Mono)' }}
+                            />
+                        </div>
+                        <div className='space-y-2'>
+                            <label
+                                htmlFor="email"
+                                className='text-xs text-[var(--text-color)]/60'
+                                style={{ fontFamily: 'var(--Jetbrains-Mono)' }}
+                            >
+                                Your Email
+                            </label>
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                value={formData.email}
+                                onChange={handleChange}
+                                required
+                                placeholder='john@example.com'
+                                className='w-full bg-transparent border border-[var(--border-color)] rounded-lg px-4 py-2.5 text-sm text-[var(--text-color)] placeholder:text-[var(--text-color)]/30 focus:outline-none focus:border-[var(--secondary-color)]/50 transition-colors duration-300'
+                                style={{ fontFamily: 'var(--Jetbrains-Mono)' }}
+                            />
                         </div>
                     </div>
-                    <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+
+                    <div className='space-y-2'>
                         <label
-                            className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                            htmlFor="grid-zip"
+                            htmlFor="subject"
+                            className='text-xs text-[var(--text-color)]/60'
+                            style={{ fontFamily: 'var(--Jetbrains-Mono)' }}
                         >
-                            Zip
+                            Subject
                         </label>
                         <input
-                            className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                            id="grid-zip"
                             type="text"
-                            placeholder="90210"
+                            id="subject"
+                            name="subject"
+                            value={formData.subject}
+                            onChange={handleChange}
+                            required
+                            placeholder='Project Collaboration'
+                            className='w-full bg-transparent border border-[var(--border-color)] rounded-lg px-4 py-2.5 text-sm text-[var(--text-color)] placeholder:text-[var(--text-color)]/30 focus:outline-none focus:border-[var(--secondary-color)]/50 transition-colors duration-300'
+                            style={{ fontFamily: 'var(--Jetbrains-Mono)' }}
                         />
                     </div>
-                </div>
-            </form>
+
+                    <div className='space-y-2'>
+                        <label
+                            htmlFor="message"
+                            className='text-xs text-[var(--text-color)]/60'
+                            style={{ fontFamily: 'var(--Jetbrains-Mono)' }}
+                        >
+                            Message
+                        </label>
+                        <textarea
+                            id="message"
+                            name="message"
+                            value={formData.message}
+                            onChange={handleChange}
+                            required
+                            rows={5}
+                            placeholder='Tell me about your project or idea...'
+                            className='w-full bg-transparent border border-[var(--border-color)] rounded-lg px-4 py-2.5 text-sm text-[var(--text-color)] placeholder:text-[var(--text-color)]/30 focus:outline-none focus:border-[var(--secondary-color)]/50 transition-colors duration-300 resize-none'
+                            style={{ fontFamily: 'var(--Jetbrains-Mono)' }}
+                        />
+                    </div>
+
+                    <Button
+                        type="submit"
+                        disabled={isSubmitting}
+                        className='w-full px-6 py-3 rounded-xl border border-[var(--secondary-color)]/60 bg-[var(--secondary-color)]/10 hover:bg-[var(--secondary-color)]/20 text-[var(--secondary-color)] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed'
+                        style={{ fontFamily: 'var(--Jetbrains-Mono)' }}
+                    >
+                        {isSubmitting ? 'Sending...' : 'Send Message'}
+                    </Button>
+                </form>
+
+                {/* ✅ Toast alongside the form */}
+                {toast.show && (
+                    <div className={`flex-shrink-0 w-64 flex items-start gap-3 px-4 py-3 rounded-xl shadow-lg border animate-slide-down ${
+                        toast.type === 'success' 
+                            ? 'bg-green-500/10 border-green-500/30 text-green-400' 
+                            : 'bg-red-500/10 border-red-500/30 text-red-400'
+                    }`}>
+                        {toast.type === 'success' ? (
+                            <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />
+                        ) : (
+                            <X className="w-5 h-5 flex-shrink-0 mt-0.5" />
+                        )}
+                        <div className='flex-1'>
+                            <p className='text-xs font-semibold mb-0.5' style={{ fontFamily: 'var(--Jetbrains-Mono)' }}>
+                                {toast.type === 'success' ? 'Success!' : 'Error!'}
+                            </p>
+                            <p className='text-xs opacity-80' style={{ fontFamily: 'var(--Jetbrains-Mono)' }}>
+                                {toast.message}
+                            </p>
+                        </div>
+                        <button 
+                            onClick={() => setToast({ show: false, message: '', type: 'success' })}
+                            className='text-current opacity-50 hover:opacity-100 transition-opacity flex-shrink-0'
+                        >
+                            <X className="w-3.5 h-3.5" />
+                        </button>
+                    </div>
+                )}
+            </div>
         </section>
     )
 }

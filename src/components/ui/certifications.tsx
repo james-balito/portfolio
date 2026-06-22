@@ -23,7 +23,7 @@ export default function Certifications() {
     return (
         <section id='certifications' className='flex flex-col justify-center items-center py-24'>
             <h1
-                className="text-3xl flex justify-center items-center mb-20"
+                className="text-2xl md:text-2xl lg:text-3xl xl:text-3xl flex justify-center items-center mb-20"
                 style={{
                     fontFamily: 'var(--Instrument-Serif)',
                     fontStyle: 'italic'
@@ -33,7 +33,7 @@ export default function Certifications() {
             </h1>
 
             {/* ✅ Dynamic grid: centered when 1 item, 2 columns when multiple */}
-            <div className={`grid gap-10 mx-20 ${certificates.length === 1
+            <div className={`grid gap-10 mx-5 md:mx-10 lg:mx-20 xl:mx-20 ${certificates.length === 1
                     ? 'grid-cols-1 max-w-3xl place-items-center'
                     : 'grid-cols-1 md:grid-cols-2'
                 }`}>
@@ -65,6 +65,8 @@ export default function Certifications() {
                                 <span className='text-xs text-[var(--text-color)]/60 text-center mt-2'>
                                     Published Date: {certificate.date}
                                 </span>
+
+                                <span className="text-xs flex justify-center mt-5 text-[var(--text-color)]/60 group-hover:text-[var(--secondary-color)]">Tap to view more</span>
                             </div>
                         </div>
                     </a>

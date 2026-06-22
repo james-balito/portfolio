@@ -1,4 +1,4 @@
-import { useRef, useCallback } from 'react';
+import { useRef } from 'react';
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -44,8 +44,25 @@ export default function Projects() {
     const projects: Project[] = [
         {
             id: 1,
+            name: "Payroll Management System",
+            description: "A system that allows a company to manage employee payroll and can print payroll reports.",
+            roles: [
+                { name: "Front-End Developer" }
+            ],
+            techStack: [
+                { name: "Laravel" },
+                { name: "React" },
+                { name: "TailwindCSS" },
+            ],
+            images: [
+                { src: "/projects/warlen.png", alt: "Project 1 - Image 1" },
+            ],
+            link: ""
+        },
+        {
+            id: 1,
             name: "Web-Based Veterinary Appointments & Pet Product Shopping System",
-            description: "Integer vel commodo nibh. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Fusce metus risus, ultricies quis metus vel, luctus scelerisque metus. Etiam sit amet lectus non ipsum rutrum sollicitudin at dapibus lorem. In ornare quam sed mi tincidunt eleifend. Ut pharetra sollicitudin velit in tempus. Nam ultricies ex in ante scelerisque, et venenatis sem commodo. Fusce ac blandit magna, eu rutrum lectus. Mauris mollis nibh nunc, at tincidunt turpis varius a. Donec eget elit sed ante lacinia lobortis.",
+            description: "A Capstone Project System that allows users to book veterinary appointments and shop for pet products. This capstone project also published internationally by the ijcsmc in May 2026.",
             roles: [
                 { name: "System Analyst" },
                 { name: "Front-End Developer" }
@@ -62,11 +79,11 @@ export default function Projects() {
             ],
             link: ""
         },
-       
+
         {
             id: 2,
             name: "Secure Profiling System with Role-Based Access Control and Automated Announcements",
-            description: "Integer vel commodo nibh. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Fusce metus risus, ultricies quis metus vel, luctus scelerisque metus. Etiam sit amet lectus non ipsum rutrum sollicitudin at dapibus lorem. In ornare quam sed mi tincidunt eleifend. Ut pharetra sollicitudin velit in tempus. Nam ultricies ex in ante scelerisque, et venenatis sem commodo. Fusce ac blandit magna, eu rutrum lectus. Mauris mollis nibh nunc, at tincidunt turpis varius a. Donec eget elit sed ante lacinia lobortis.",
+            description: "A Mini-Capstone Project System that we developed to help users to secure their profiles with role-based access control and automated announcements.",
             roles: [
                 { name: "Front-End Developer" }
             ],
@@ -84,7 +101,7 @@ export default function Projects() {
         }, {
             id: 3,
             name: "Hardware Inventory & Point of Sales System",
-            description: "Integer vel commodo nibh. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Fusce metus risus, ultricies quis metus vel, luctus scelerisque metus. Etiam sit amet lectus non ipsum rutrum sollicitudin at dapibus lorem. In ornare quam sed mi tincidunt eleifend. Ut pharetra sollicitudin velit in tempus. Nam ultricies ex in ante scelerisque, et venenatis sem commodo. Fusce ac blandit magna, eu rutrum lectus. Mauris mollis nibh nunc, at tincidunt turpis varius a. Donec eget elit sed ante lacinia lobortis.",
+            description: "A Personal Project System that i developed to help my parents manage their hardware inventory and point of sales.",
             roles: [
                 { name: "Full-Stack Developer" }
             ],
@@ -158,7 +175,7 @@ export default function Projects() {
 
     return (
         <>
-            <section ref={sectionRef} id = "projects" className="flex flex-col items-center justify-center py-20">
+            <section ref={sectionRef} id="projects" className="flex flex-col items-center justify-center py-20">
                 <h1
                     ref={titleRef}
                     className="text-3xl mt-10 mb-30"
@@ -171,7 +188,7 @@ export default function Projects() {
                     Projects
                 </h1>
 
-                <div className='grid grid-cols-1 md:grid-cols-2 gap-10 mx-20'>
+                <div className='grid grid-cols-1 md:grid-cols-2 gap-10 mx-4 md:mx-10 lg:mx-20 xl:mx-20'>
                     {projects.map((project, index) => (
                         <a
                             href={project.link}
@@ -193,7 +210,7 @@ export default function Projects() {
                                     />
                                 </div>
                                 <div className='flex flex-col border-t-[var(--border-color)] p-5 bg-white dark:bg-[var(--bg-color)]'>
-                                    <h2 className='font-500 text-xl text-[var(--text-color)] text-center -mt-2 mb-2'
+                                    <h2 className='font-500 text-lg xl:text-xl text-[var(--text-color)] text-center -mt-2 mb-2'
                                         style={{ fontFamily: 'var(--Instrument-Serif)' }}
                                     >{project.name}</h2>
                                     <span>
@@ -207,7 +224,7 @@ export default function Projects() {
                                             </span>
                                         ))}
                                     </span>
-                                    <p className='text-sm text-[var(--text-color)]/80 text-center my-2'>{project.description}</p>
+                                    <p className='text-sm xl:text-sm text-[var(--text-color)]/80 text-center my-2'>{project.description}</p>
                                     <span>
                                         <span className='text-xs fomt-semibold text-slate-500'>Tech Stack: <br /></span>
                                         {project.techStack.map((techstack, index) => (
