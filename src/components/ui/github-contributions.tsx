@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useRef } from 'react';
-import { GitHubCalendar } from 'react-github-calendar';
+import { GitHubCalendar, type Activity } from 'react-github-calendar';
 import { FaGithub } from 'react-icons/fa6';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
@@ -31,7 +31,7 @@ export default function GitHubContributions() {
     // }, []);
 
     // ✅ Filter to show only last 6 months
-    const selectLastSixMonths = (contributions: Array<{ date: string; }>) => {
+    const selectLastSixMonths = (contributions: Activity[]) => {
         const today = new Date();
         const sixMonthsAgo = new Date();
         sixMonthsAgo.setMonth(today.getMonth() - 6);
