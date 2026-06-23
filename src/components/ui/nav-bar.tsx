@@ -138,7 +138,7 @@ export default function NavBar() {
                         </a>
                         <a
                             href="#contact"
-                            className="h-9 flex items-center justify-center px-4 border border-[var(--secondary-color)]/50 bg-transparent rounded-xl text-[var(--secondary-color)] font-medium transition-all duration-300 hover:bg-[var(--secondary-color)] hover:text-white cursor-pointer text-sm hover:font-medium"
+                            className="h-9 flex items-center justify-center mx-0 px-4 border border-[var(--secondary-color)]/50 bg-transparent rounded-xl text-[var(--secondary-color)] font-medium transition-all duration-300 hover:bg-[var(--secondary-color)] hover:text-white cursor-pointer text-sm hover:font-medium"
                             style={{ fontFamily: 'var(--Poppins)' }}
                         >
                             Book a Call
