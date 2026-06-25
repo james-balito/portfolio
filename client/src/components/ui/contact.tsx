@@ -48,7 +48,7 @@ export default function Contact() {
         // ✅ Fix #2: AbortController timeout — handles Render cold starts (30-60s spin-up)
         // Without this, the button stays in "Sending..." forever on cold start
         const controller = new AbortController();
-        const timeout = setTimeout(() => controller.abort(), 15000); // 15 second limit
+        const timeout = setTimeout(() => controller.abort(), 60000); //60 second limit
 
         try {
             // ✅ Fix #3: Dynamic API_URL — works on localhost, mobile, and production

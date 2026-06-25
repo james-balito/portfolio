@@ -24,6 +24,8 @@ const allowedOrigins = [
     'https://james-balito.github.io',
 ];
 
+app.options('*', cors()); // ← handles ALL preflight requests
+
 app.use(cors({
     origin: function (origin, callback) {
         // Allow requests with no origin (Postman, curl, native mobile apps)
@@ -36,7 +38,8 @@ app.use(cors({
             callback(new Error('Not allowed by CORS'));
         }
     },
-    methods: ['GET', 'POST'],
+    methods: ['GET', 'POST', 'OPTIONS'],
+    allowedHeaders: ['Content-Type'],
     credentials: true
 }));
 
@@ -97,8 +100,8 @@ app.post('/api/contact', contactLimiter, async (req, res) => {
         console.log(`📦 From: ${name} <${email}>`);
 
         // ✅ Escape all user input before injecting into HTML email
-        const safeName    = escapeHtml(name);
-        const safeEmail   = escapeHtml(email);
+        const safeName = escapeHtml(name);
+        const safeEmail = escapeHtml(email);
         const safeSubject = escapeHtml(subject);
         const safeMessage = escapeHtml(message);
 
@@ -231,14 +234,14 @@ app.post('/api/contact', contactLimiter, async (req, res) => {
             </p>
             <p class="timestamp">
                 ${new Date().toLocaleString('en-US', {
-                    weekday: 'long',
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric',
-                    hour: '2-digit',
-                    minute: '2-digit',
-                    timeZoneName: 'short'
-                })}
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit',
+                timeZoneName: 'short'
+            })}
             </p>
         </div>
     </div>
