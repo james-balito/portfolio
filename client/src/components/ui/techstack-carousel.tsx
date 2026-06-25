@@ -50,7 +50,7 @@ export default function TechStackCarousel() {
                 trigger: sectionRef.current,
                 start: "top 100%",
                 end: "top 100%",
-                toggleActions: "play none none reverse",
+                toggleActions: "play none none none",
                 // markers: true, // Uncomment to debug
             }
         });

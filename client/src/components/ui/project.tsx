@@ -45,7 +45,7 @@ export default function Projects() {
         {
             id: 1,
             name: "Payroll Management System",
-            description: "A system that allows a company to manage employee payroll and can print payroll reports.",
+            description: "A system that allows a company to import data from biometric attendance devices and automate excel sheets converting it to generate payrolls to each employees. Managing employee payrolls, deductions, and incentives and can print payroll reports.",
             roles: [
                 { name: "Front-End Developer" }
             ],
@@ -83,7 +83,7 @@ export default function Projects() {
         {
             id: 2,
             name: "Secure Profiling System with Role-Based Access Control and Automated Announcements",
-            description: "A Mini-Capstone Project System that we developed to help users to secure their profiles with role-based access control and automated announcements.",
+            description: "A Mini-Capstone Project System that we developed to help users to secure their profiles in their barangay that they can also access the announcements from the barangay.",
             roles: [
                 { name: "Front-End Developer" }
             ],
@@ -101,7 +101,7 @@ export default function Projects() {
         }, {
             id: 3,
             name: "Hardware Inventory & Point of Sales System",
-            description: "A Personal Project System that i developed to help my parents manage their hardware inventory and point of sales.",
+            description: "System designed for the small business owners customized in hardware business that can generate sales, tracks sales and inventories and real-time.",
             roles: [
                 { name: "Full-Stack Developer" }
             ],
@@ -178,7 +178,7 @@ export default function Projects() {
             <section ref={sectionRef} id="projects" className="flex flex-col items-center justify-center py-15">
                 <h1
                     ref={titleRef}
-                    className="text-3xl mt-10 mb-30"
+                    className="text-3xl mt-10 mb-20 xl:mb-30"
                     style={{
                         fontFamily: 'var(--Instrument-Serif)',
                         fontStyle: 'italic',

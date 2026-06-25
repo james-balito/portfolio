@@ -22,6 +22,7 @@ const techStacks: TechStack[] = [
     { id: 7, img: '/tech-stacks/html5.png', label: 'HTML5', category: 'frontend' },
     { id: 8, img: '/tech-stacks/css3.png', label: 'CSS3', category: 'frontend' },
     { id: 9, img: '/tech-stacks/javascript.png', label: 'JavaScript', category: 'frontend' },
+    { id: 12, img: '/tech-stacks/alpinejs.png', label: 'AlpineJS', category: 'frontend' },
 
     // Backend
     { id: 10, img: '/tech-stacks/laravel.png', label: 'Laravel', category: 'backend' },
@@ -317,7 +318,7 @@ export default function About() {
             </h1>
 
             {/* About Content */}
-            <div className='flex justify-between grid grid-cols-1 xl:grid-cols-12'>
+            <div className='flex justify-between grid grid-cols-1 xl:grid-cols-12 mt-10 md:mt-0 lg:mt-0 xl:mt-0'>
                 <img
                     src="/about-me.jpg"
                     alt="James Balito"

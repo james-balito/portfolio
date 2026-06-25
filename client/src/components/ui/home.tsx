@@ -134,7 +134,7 @@ export default function Home() {
             }, "-=0.5");
     }, []);
 
-    const homeText = "Crafting premium digital experiences through modern web technologies, scalable architecture, and user-centered design. I build applications that are intuitive, performance, and engineered to grow.";
+    const homeText = "Crafting premium digital experiences through modern web technologies, scalable architecture, and user-centered design. Let's build applications that are intuitive, performance, and engineered to grow.";
 
     const renderAnimatedText = (text: string) => {
         return text.split(' ').map((word, index) => (
@@ -234,7 +234,7 @@ export default function Home() {
             </div>
 
             <div className="profile-image flex justify-center xl:justify-end items-center order-1 py-5 xl:order-2 xl:-mt-20 xl:py-20">
-                <img src="/public/body-image.png" alt="James Balito" className="w-[200px] h-[200px] md:w-[100px] md:h-[150px] lg:w-[500px] lg:h-[450px] xl:w-[500px] xl:h-[450px]" />
+                <img src="/body-image.png" alt="James Balito" className="w-[200px] h-[200px] md:w-[100px] md:h-[150px] lg:w-[500px] lg:h-[450px] xl:w-[500px] xl:h-[450px]" />
             </div>
         </section>
     )

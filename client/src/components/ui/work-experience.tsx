@@ -84,7 +84,7 @@ export default function WorkExperience() {
                 ease: "none",
                 scrollTrigger: {
                     trigger: sectionRef.current,
-                    start: "top 10%",
+                    start: "top 50%",
                     end: "bottom 10%",
                     scrub: 0.2,
                 }
@@ -146,7 +146,7 @@ export default function WorkExperience() {
                     const startPx  = Math.round(scrubFraction * sectionH);
 
                     // Fade window: 80px before the dot arrives → 80px after
-                    const window = 80;
+                    const window = 250;
 
                     ScrollTrigger.create({
                         trigger: section,
@@ -256,20 +256,6 @@ export default function WorkExperience() {
                                      * connector-dot:  small circle sitting on the rail at card level
                                      */}
 
-                                    {/* Connector dot — sits on the center rail */}
-                                    <div
-                                        className={`connector-dot hidden md:block absolute top-8 left-0 md:left-1/2 -translate-x-1/2 w-3 h-3 rounded-full border-2 border-blue-500 bg-[#0f172a] z-20`}
-                                    />
-
-                                    {/* Connector line — horizontal bridge from rail to card */}
-                                    <div
-                                        className={`connector-line hidden md:block absolute top-[2.35rem] h-px bg-blue-500/30 z-10 ${
-                                            isEven
-                                                ? 'left-[calc(50%+0.25rem)] w-[calc(50%-2.5rem-0.25rem)]'
-                                                : 'right-[calc(50%+0.25rem)] w-[calc(50%-2.5rem-0.25rem)]'
-                                        }`}
-                                    />
-
                                     {/* Card layout block */}
                                     <div className={`w-full md:w-[calc(50%-2.5rem)] pl-5 md:pl-0`}>
 
@@ -290,7 +276,7 @@ export default function WorkExperience() {
                                             </div>
 
                                             <h4
-                                                className="text-base text-blue-400 font-medium tracking-wide mb-1"
+                                                className="text-sm xl:text-base text-blue-400 font-medium tracking-wide mb-1"
                                                 style={{ fontFamily: 'var(--Inter)' }}
                                             >
                                                 {experience.company}

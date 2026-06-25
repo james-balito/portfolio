@@ -101,7 +101,7 @@ export default function Contact() {
             </h1>
 
             <p
-                className='text-center text-[var(--text-color)]/70 text-base max-w-xl mb-10 leading-relaxed'
+                className='text-center text-[var(--text-color)]/70 text-sm xl:text-base max-w-xl mb-10 leading-relaxed'
                 style={{ fontFamily: 'var(--Jetbrains-Mono)' }}
             >
                 Have a project in mind, opportunity to collaborate, or just want to chat?
