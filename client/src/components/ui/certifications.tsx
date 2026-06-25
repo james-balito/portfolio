@@ -48,8 +48,7 @@ export default function Certifications() {
                 trigger: containerRef.current,
                 start: 'top 70%',
                 end: 'bottom 0%',
-                toggleActions: 'play none none reverse',
-                markers: true
+                toggleActions: 'play none none reverse'
             }
         })
 
