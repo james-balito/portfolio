@@ -49,20 +49,16 @@ export default function About() {
     const techSectionRef = useRef<HTMLDivElement>(null);
     const techBadgesRef = useRef<HTMLDivElement>(null);
 
-    // ✅ Filter state
     const [activeFilter, setActiveFilter] = useState<string>('all');
-    
-    // Track if initial animation has played
     const [initialAnimationPlayed, setInitialAnimationPlayed] = useState(false);
 
     gsap.registerPlugin(ScrollTrigger);
 
-    // Main scroll-triggered animation
+    // ========== 1. ABOUT SECTION ANIMATION ==========
     useGSAP(() => {
         const wordElements = paragraphRef.current?.querySelectorAll('.word');
-        const techBadges = techBadgesRef.current?.querySelectorAll('.tech-badge');
 
-        // Set initial states for ALL elements
+        // Set initial states
         gsap.set([aboutheaderRef.current, imgRef.current], {
             opacity: 0,
             y: 30
@@ -78,22 +74,21 @@ export default function About() {
             y: 20
         });
 
-        // Set initial state for each word
         if (wordElements && wordElements.length > 0) {
             gsap.set(wordElements, {
                 opacity: 0,
                 x: -10,
-                rotation: 0,
             });
         }
 
-        // Create main timeline
+        // Create timeline
         const tl = gsap.timeline({
             scrollTrigger: {
                 trigger: sectionRef.current,
                 start: "top 70%",
                 end: "bottom 20%",
                 toggleActions: "play none none reverse",
+                // markers: true, // Debug: shows trigger points
             }
         });
 
@@ -107,7 +102,7 @@ export default function About() {
             });
         }
 
-        // Animate image with slight delay
+        // Animate image
         if (imgRef.current) {
             tl.to(imgRef.current, {
                 y: 0,
@@ -142,6 +137,7 @@ export default function About() {
             }, "-=0.3");
         }
 
+        // Animate caption
         if (captionRef.current) {
             tl.to(captionRef.current, {
                 y: 0,
@@ -151,107 +147,120 @@ export default function About() {
             }, "-=0.5");
         }
 
-        // ✅ Animate tech section with its own ScrollTrigger
-        if (techSectionRef.current) {
-            const techTl = gsap.timeline({
-                scrollTrigger: {
-                    trigger: techSectionRef.current,
-                    start: "top 50%",
-                    end: "bottom 20%",
-                    toggleActions: "play none none reverse",
-                }
-            });
+    }, []); // ✅ Runs once on mount
 
-            // Animate tech header
-            const techHeader = techSectionRef.current.querySelector('h2');
-            if (techHeader) {
-                techTl.fromTo(techHeader, 
-                    { opacity: 0, y: 20 },
-                    { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }
-                );
-            }
+    // ========== 2. TECH SECTION SCROLL ANIMATION ==========
+    useGSAP(() => {
+        if (!techSectionRef.current) return;
 
-            // Animate filter buttons
-            const filterButtons = techSectionRef.current.querySelectorAll('.filter-btn');
-            if (filterButtons.length > 0) {
-                techTl.fromTo(filterButtons, 
-                    { opacity: 0, y: 10, scale: 0.95 },
-                    { 
-                        opacity: 1, 
-                        y: 0, 
-                        scale: 1, 
-                        duration: 0.3, 
-                        ease: "back.out(1.4)",
-                        stagger: { each: 0.05, from: "start" }
-                    },
-                    "-=0.2"
-                );
-            }
+        const techHeader = techSectionRef.current.querySelector('h2');
+        const filterButtons = techSectionRef.current.querySelectorAll('.filter-btn');
+        const techBadges = techBadgesRef.current?.querySelectorAll('.tech-badge');
 
-            // Animate tech badges with stagger
-            if (techBadges && techBadges.length > 0) {
-                techTl.fromTo(techBadges, 
-                    { opacity: 0, y: 20, scale: 0.8, rotation: -5 },
-                    { 
-                        opacity: 1, 
-                        y: 0, 
-                        scale: 1, 
-                        rotation: 0,
-                        duration: 0.5, 
-                        ease: "back.out(1.7)",
-                        stagger: { 
-                            each: 0.06, 
-                            from: "start",
-                            grid: "auto",
-                            ease: "power2.out"
-                        } 
-                    },
-                    "-=0.1"
-                );
-            }
-
-            // Mark initial animation as played
-            setInitialAnimationPlayed(true);
+        // ✅ HIDE everything first
+        if (techHeader) {
+            gsap.set(techHeader, { opacity: 0, y: 20 });
         }
 
-    }, []);
+        if (filterButtons.length > 0) {
+            gsap.set(filterButtons, { opacity: 0, y: 10, scale: 0.95 });
+        }
 
-    // ✅ Filter change animation - runs when activeFilter changes
+        if (techBadges && techBadges.length > 0) {
+            gsap.set(techBadges, { opacity: 0, y: 20, scale: 0.8, rotation: -5 });
+        }
+
+        // ✅ Create timeline - plays once and stays
+        const techTl = gsap.timeline({
+            scrollTrigger: {
+                trigger: techSectionRef.current,
+                start: "top 80%",
+                end: "top 30%",
+                toggleActions: "play none none none", // Play once, never reverse
+                // markers: true, // Debug: shows trigger points
+            }
+        });
+
+        if (techHeader) {
+            techTl.to(techHeader, {
+                opacity: 1, 
+                y: 0, 
+                duration: 0.5, 
+                ease: "power2.out"
+            });
+        }
+
+        if (filterButtons.length > 0) {
+            techTl.to(filterButtons, {
+                opacity: 1, 
+                y: 0, 
+                scale: 1, 
+                duration: 0.3,
+                ease: "back.out(1.4)",
+                stagger: { each: 0.05, from: "start" }
+            }, "-=0.2");
+        }
+
+        if (techBadges && techBadges.length > 0) {
+            techTl.to(techBadges, {
+                opacity: 1, 
+                y: 0, 
+                scale: 1, 
+                rotation: 0,
+                duration: 0.5, 
+                ease: "back.out(1.7)",
+                stagger: { 
+                    each: 0.06, 
+                    from: "start", 
+                    grid: "auto", 
+                    ease: "power2.out" 
+                }
+            }, "-=0.1");
+        }
+
+        setInitialAnimationPlayed(true);
+
+    }, [activeFilter]); // ✅ Re-run when filter changes
+
+    // ========== 3. FILTER CHANGE ANIMATION ==========
     useEffect(() => {
         if (!techBadgesRef.current || !initialAnimationPlayed) return;
-        
+
+        // Get fresh NodeList after filter change
         const techBadges = techBadgesRef.current.querySelectorAll('.tech-badge');
-        
+
         if (techBadges && techBadges.length > 0) {
-            // Kill any existing animations on these elements
+            // Kill any existing animations
             gsap.killTweensOf(techBadges);
-            
-            // Animate badges with stagger when filter changes
-            gsap.fromTo(techBadges, 
-                { 
-                    opacity: 0, 
-                    y: 15, 
+
+            // Animate badges with stagger
+            gsap.fromTo(techBadges,
+                {
+                    opacity: 0,
+                    y: 15,
                     scale: 0.85,
                     rotation: -3
                 },
-                { 
-                    opacity: 1, 
-                    y: 0, 
+                {
+                    opacity: 1,
+                    y: 0,
                     scale: 1,
                     rotation: 0,
-                    duration: 0.4, 
+                    duration: 0.4,
                     ease: "back.out(1.7)",
-                    stagger: { 
-                        each: 0.04, 
+                    stagger: {
+                        each: 0.04,
                         from: "random",
                         ease: "power2.out",
-                    } 
+                    }
                 }
             );
         }
     }, [activeFilter, initialAnimationPlayed]);
 
-    // ✅ Split text into words for animation
+    // ========== HELPER FUNCTIONS ==========
+    
+    // Split text into words for animation
     const aboutText = `I specialize in both frontend and backend development, focusing on transforming complex ideas into efficient, scalable digital processes. Guided by a strong foundation in system analysis, I take full ownership of the development process, ensuring a smooth lifecycle to build secure, high-performance web applications from the ground up.`;
 
     const renderAnimatedText = (text: string) => {
@@ -269,7 +278,7 @@ export default function About() {
         ));
     };
 
-    // ✅ Filter categories with "All" option
+    // Filter categories
     const categories = [
         { key: 'all', label: 'All' },
         { key: 'frontend', label: 'Frontend' },
@@ -279,20 +288,22 @@ export default function About() {
         { key: 'tools', label: 'Tools' },
     ];
 
-    // ✅ Filtered tech stacks based on active filter
+    // Filtered tech stacks
     const filteredTechStacks = useMemo(() => {
         if (activeFilter === 'all') return techStacks;
         return techStacks.filter(tech => tech.category === activeFilter);
     }, [activeFilter]);
 
-    // ✅ Count for each category
+    // Count for each category
     const getCount = (category: string) => {
         if (category === 'all') return techStacks.length;
         return techStacks.filter(t => t.category === category).length;
     };
 
+    // ========== RENDER ==========
     return (
         <section ref={sectionRef} id="about" className="overflow-hidden">
+            {/* About Me Header */}
             <h1
                 style={{
                     fontFamily: 'var(--Instrument-Serif)',
@@ -305,6 +316,7 @@ export default function About() {
                 About Me
             </h1>
 
+            {/* About Content */}
             <div className='flex justify-between grid grid-cols-1 xl:grid-cols-12'>
                 <img
                     src="/about-me.jpg"
@@ -344,7 +356,7 @@ export default function About() {
                 </div>
             </div>
 
-            {/* ✅ Technologies and Tools Section */}
+            {/* Technologies & Tools Section */}
             <div ref={techSectionRef} className='xl:mt-20 mb-10'>
                 <h2
                     style={{
@@ -357,30 +369,32 @@ export default function About() {
                     Technologies & Tools
                 </h2>
 
-                {/* ✅ Filter buttons */}
+                {/* Filter buttons */}
                 <div className='flex flex-wrap justify-center gap-3 mb-8'>
                     {categories.map((category) => (
                         <button
                             key={category.key}
                             onClick={() => setActiveFilter(category.key)}
-                            className={`filter-btn relative text-xs rounded-full px-4 py-1.5 transition-all duration-300 ${activeFilter === category.key
-                                ? 'bg-[var(--secondary-color)]/20 text-[var(--secondary-color)] border border-[var(--secondary-color)]/50'
-                                : 'text-[var(--text-color)]/60 border border-[var(--border-color)] hover:border-[var(--secondary-color)]/30 hover:text-[var(--text-color)]/80'
-                                }`}
+                            className={`filter-btn relative text-xs rounded-full px-4 py-1.5 transition-all duration-300 ${
+                                activeFilter === category.key
+                                    ? 'bg-[var(--secondary-color)]/20 text-[var(--secondary-color)] border border-[var(--secondary-color)]/50'
+                                    : 'text-[var(--text-color)]/60 border border-[var(--border-color)] hover:border-[var(--secondary-color)]/30 hover:text-[var(--text-color)]/80'
+                            }`}
                             style={{ fontFamily: 'var(--Jetbrains-Mono)' }}
                         >
                             {category.label}
-                            <span className={`ml-1.5 text-[10px] ${activeFilter === category.key
-                                ? 'text-[var(--secondary-color)]/70'
-                                : 'text-[var(--text-color)]/40'
-                                }`}>
+                            <span className={`ml-1.5 text-[10px] ${
+                                activeFilter === category.key
+                                    ? 'text-[var(--secondary-color)]/70'
+                                    : 'text-[var(--text-color)]/40'
+                            }`}>
                                 {getCount(category.key)}
                             </span>
                         </button>
                     ))}
                 </div>
 
-                {/* ✅ Filtered tech badges */}
+                {/* Tech badges */}
                 <div
                     ref={techBadgesRef}
                     className='flex flex-wrap justify-center gap-3 max-w-4xl mx-auto'
@@ -401,7 +415,6 @@ export default function About() {
                         </span>
                     ))}
 
-                    {/* Empty state */}
                     {filteredTechStacks.length === 0 && (
                         <p className='text-sm text-[var(--text-color)]/40 py-8'>
                             No technologies found
@@ -415,12 +428,13 @@ export default function About() {
                         const count = techStacks.filter(t => t.category === category.key).length;
                         return (
                             <div key={category.key} className='flex items-center gap-2'>
-                                <span className={`w-2 h-2 rounded-full ${category.key === 'frontend' ? 'bg-blue-400' :
+                                <span className={`w-2 h-2 rounded-full ${
+                                    category.key === 'frontend' ? 'bg-blue-400' :
                                     category.key === 'backend' ? 'bg-green-400' :
-                                        category.key === 'database' ? 'bg-yellow-400' :
-                                            category.key === 'devops' ? 'bg-purple-400' :
-                                                'bg-pink-400'
-                                    }`} />
+                                    category.key === 'database' ? 'bg-yellow-400' :
+                                    category.key === 'devops' ? 'bg-purple-400' :
+                                    'bg-pink-400'
+                                }`} />
                                 <span className='text-xs text-[var(--text-color)]/50'>
                                     {category.label} ({count})
                                 </span>
