@@ -196,7 +196,7 @@ export default function Contact() {
 
     return (
         <>
-            {/* ✅ Debug Panel - Mobile Friendly */}
+            {/* ✅ Debug Panel - Mobile Friendly
             <div className="fixed top-0 left-0 right-0 z-50 bg-black/95 text-xs text-green-400 p-2 max-h-32 overflow-y-auto font-mono">
                 <div className="flex justify-between items-center mb-1">
                     <span className="font-bold">🐛 Debug Console</span>
@@ -228,7 +228,7 @@ export default function Contact() {
                         {log}
                     </div>
                 ))}
-            </div>
+            </div> */}
 
             {/* ✅ Toast */}
             {toast.show && (
