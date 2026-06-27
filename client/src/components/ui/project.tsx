@@ -94,7 +94,7 @@ export default function Projects() {
             images: [
                 { src: "/projects/skwebsite.png", alt: "Project 3 - Image 1" },
                 { src: "/projects/capsproj.PNG", alt: "Project 3 - Image 2" },
-                { src: "/projects/invpos.PNG", alt: "Project 3 - Image 3" },
+                { src: "/projects/invpos.png", alt: "Project 3 - Image 3" },
                 { src: "/projects/skwebsite.png", alt: "Project 3 - Image 4" },
             ],
             link: ""
@@ -109,11 +109,12 @@ export default function Projects() {
                 { name: "Laravel" },
                 { name: "TailwindCSS" },
                 { name: "HTML" },
-                { name: "Filament" },
-                { name: "Livewire" },
+                { name: "React" },
+                { name: "Inertia" },
+                { name: "TypeScript" },
             ],
             images: [
-                { src: "/projects/invpos.PNG", alt: "Project 2 - Image 1" },
+                { src: "/projects/invpos.png", alt: "Project 2 - Image 1" },
                 { src: "/projects/capsproj.PNG", alt: "Project 2 - Image 2" },
             ],
             link: ""
