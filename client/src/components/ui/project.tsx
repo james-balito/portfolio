@@ -60,7 +60,7 @@ export default function Projects() {
             link: ""
         },
         {
-            id: 1,
+            id: 2,
             name: "Web-Based Veterinary Appointments & Pet Product Shopping System",
             description: "A Capstone Project System that allows users to book veterinary appointments and shop for pet products. This capstone project also published internationally by the ijcsmc in May 2026.",
             roles: [
@@ -81,7 +81,7 @@ export default function Projects() {
         },
 
         {
-            id: 2,
+            id: 3,
             name: "Secure Profiling System with Role-Based Access Control and Automated Announcements",
             description: "A Mini-Capstone Project System that we developed to help users to secure their profiles in their barangay that they can also access the announcements from the barangay.",
             roles: [
@@ -99,7 +99,7 @@ export default function Projects() {
             ],
             link: ""
         }, {
-            id: 3,
+            id: 4,
             name: "Hardware Inventory & Point of Sales System",
             description: "System designed for the small business owners customized in hardware business that can generate sales, tracks sales and inventories and real-time.",
             roles: [
@@ -114,8 +114,8 @@ export default function Projects() {
                 { name: "TypeScript" },
             ],
             images: [
-                { src: "/projects/invpos.png", alt: "Project 2 - Image 1" },
-                { src: "/projects/capsproj.PNG", alt: "Project 2 - Image 2" },
+                { src: "/projects/invpos.png", alt: "Project 4 - Image 1" },
+                { src: "/projects/capsproj.PNG", alt: "Project 4 - Image 2" },
             ],
             link: ""
         },
