@@ -74,7 +74,7 @@ export default function Projects() {
             ],
             images: [
                 { src: "/projects/capsproj.PNG", alt: "Project 1 - Image 1" },
-                { src: "/projects/invpos.PNG", alt: "Project 1 - Image 2" },
+                { src: "/projects/invpos.png", alt: "Project 1 - Image 2" },
                 { src: "/projects/skwebsite.png", alt: "Project 1 - Image 3" },
             ],
             link: ""
@@ -114,7 +114,7 @@ export default function Projects() {
                 { name: "TypeScript" },
             ],
             images: [
-                { src: "/projects/invpos.png", alt: "Project 4 - Image 1" },
+                { src: "/projects/hardware-invpos.png", alt: "Project 4 - Image 1" },
                 { src: "/projects/capsproj.PNG", alt: "Project 4 - Image 2" },
             ],
             link: ""
@@ -207,7 +207,7 @@ export default function Projects() {
                                     <img
                                         src={project.images[0].src}
                                         alt={project.images[0].alt}
-                                        className='w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-110'
+                                        className='w-[700px] h-[330px] object-cover transition-transform duration-500 ease-in-out group-hover:scale-110'
                                     />
                                 </div>
                                 <div className='flex flex-col border-t-[var(--border-color)] p-5 bg-white dark:bg-[var(--bg-color)]'>
